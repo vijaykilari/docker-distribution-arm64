@@ -54,7 +54,7 @@ func monitor(c *WrapConfig) (int, error) {
 		return -1, err
 	}
 
-	err = syscall.Dup2(int(write.Fd()), int(os.Stderr.Fd()))
+	err = syscall.Dup3(int(write.Fd()), int(os.Stderr.Fd()), int(0))
 	if err != nil {
 		return -1, err
 	}
